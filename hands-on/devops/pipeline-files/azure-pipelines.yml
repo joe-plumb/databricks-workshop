@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+# the selected branch that will initiate the test 
+trigger: none
+
+# where this test is going to run - can choose Ubuntu
+pool:
+  vmImage: 'windows-latest'
+
+# Other options available:
+#  vmImage: 'ubuntu-latest'
+#  vmImage: 'macOS-latest'
+
+# steps to run in this test
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
