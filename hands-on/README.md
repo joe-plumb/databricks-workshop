@@ -651,7 +651,7 @@ Null values refer to unknown or missing data as well as irrelevant responses. St
 * **Basic imputing:** Allows you to have a "best guess" of what the data could have been, often by using the mean of non-missing data
 * **Advanced imputing:** Determines the "best guess" of what data should be using more advanced strategies such as clustering machine learning algorithms or oversampling techniques <a href="https://jair.org/index.php/jair/article/view/10302" target="_blank">such as SMOTE.</a>
 
-<img alt="Side Note" title="Side Note" style="vertical-align: text-bottom; position: relative; height:1.75em; top:0.05em; transform:rotate(15deg)" src="https://files.training.databricks.com/static/images/icon-note.webp"/> Try to determine why a value is null.  This can provide information that can be helpful to the model.
+Try to determine why a value is null.  This can provide information that can be helpful to the model.
 
 Describe the dataset and take a look at the `count` values.  There's a fair amount of missing data in this dataset.
 
@@ -747,7 +747,7 @@ Simple linear regression looks to predict a response `Y` using a single input va
 
 In this case, `β<sub>0</sub>` and `β<sub>1</sub>` are our **coefficients** where `β<sub>0</sub>` represents the line's intercept with the Y axis and `β<sub>1</sub>` represents the number we multiply by X in order to attain a prediction.  **A simple linear regression model will try to fit our data a closely as possible by estimating these coefficients,** putting a line through the data.
 
-<img alt="Side Note" title="Side Note" style="vertical-align: text-bottom; position: relative; height:1.75em; top:0.05em; transform:rotate(15deg)" src="https://files.training.databricks.com/static/images/icon-note.webp"/> In the case of inferential statistics where we're interested in learning about the relationship between our input features and outputs, it's common to skip the train/test split step, as you'll see in this lesson.
+In the case of inferential statistics where we're interested in learning about the relationship between our input features and outputs, it's common to skip the train/test split step, as you'll see in this lesson.
 
 #### Step 4 : Import and prepare data
 Import the Boston dataset.
@@ -805,13 +805,13 @@ print("β1 (coefficient for rm): {}".format(*lrModel.coefficients))
 
 For a 5 bedroom home, our model would predict `-35.7 + (9.1 * 5)` or `$18,900`.  That's not too bad.
 
-<img alt="Side Note" title="Side Note" style="vertical-align: text-bottom; position: relative; height:1.75em; top:0.05em; transform:rotate(15deg)" src="https://files.training.databricks.com/static/images/icon-note.webp"/> The intercept of `-34.7` doesn't make a lot of sense on its own since this would imply that a studio apartment would be worth negative dollars.  Also, we don't have any 1 or 2 bedroom homes in our dataset, so the model will perform poorly on data in this range.
+The intercept of `-34.7` doesn't make a lot of sense on its own since this would imply that a studio apartment would be worth negative dollars.  Also, we don't have any 1 or 2 bedroom homes in our dataset, so the model will perform poorly on data in this range.
 
 In order to determine whether our coefficients are statistically significant, we need to quantify the likelihood of seeing the association by chance.  One way of doing this is using a p-value.  As a general rule of thumb, a p-value of under .05 indicates statistical significance in that there is less than a 1 in 20 chance of seeing the correlation by mere chance.
 
 Do this using the `summary` attribute of `lrModel`.
 
-<img alt="Side Note" title="Side Note" style="vertical-align: text-bottom; position: relative; height:1.75em; top:0.05em; transform:rotate(15deg)" src="https://files.training.databricks.com/static/images/icon-note.webp"/> The t-statistic can be used instead of p-values.  <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">Read more about p-values here.</a>
+The t-statistic can be used instead of p-values.  <a href="https://en.wikipedia.org/wiki/P-value" target="_blank">Read more about p-values here.</a>
 
 ```
 summary = lrModel.summary
@@ -839,7 +839,7 @@ While simple linear regression involves just a single input feature, multivariat
 
 &nbsp;&nbsp;&nbsp;&nbsp;`Y ≈ β<sub>0</sub> + β<sub>1</sub>X<sub>1</sub> + β<sub>2</sub>X<sub>2</sub> + ... + β<sub>p</sub>X<sub>p</sub>`
 
-<img alt="Side Note" title="Side Note" style="vertical-align: text-bottom; position: relative; height:1.75em; top:0.05em; transform:rotate(15deg)" src="https://files.training.databricks.com/static/images/icon-note.webp"/> Our ability to visually explain how our model is performing becomes more limited as our number of features go up since we can only intuitively visualize data in two, possibly three dimensions.  With multivariate regression, we're therefore still putting lines through data, but this is happening in a higher dimensional space.
+Our ability to visually explain how our model is performing becomes more limited as our number of features go up since we can only intuitively visualize data in two, possibly three dimensions.  With multivariate regression, we're therefore still putting lines through data, but this is happening in a higher dimensional space.
 
 Train a multivariate regression model using `rm`, `crim`, and `lstat` as the input features. First, assemble the features:
 
