@@ -15,6 +15,130 @@ Follow the below links to get your environment set up:
 
 ## Lab 1: Introduction to Azure Databricks and Spark Notebooks
 
+### What is Apache Spark notebook?
+A notebook is a collection of cells. These cells are run to execute code, to render formatted text, or to display graphical visualizations.
+### Create a new Notebook
+1. In the Azure portal, click All resources menu on the left side navigation and select the Databricks workspace you created in the last unit.
+2. Select Launch Workspace to open your Databricks workspace in a new tab.
+3. On the left-hand menu of your Databricks workspace, select Home.
+4. Right-click on your home folder.
+5. Select Create.
+6. Select Notebook.
+7. The menu option to create a new notebook
+8. Name your notebook First Notebook.
+9. Set the Language to Python.
+10. Select the cluster to which to attach this notebook.
+11. Select Create.
+
+Now that you've created your notebook, let's use it to run some code.
+
+
+## Technical Accomplishments from this lab:
+- Set the stage for learning on the Databricks platform
+- Demonstrate how to develop & execute code within a notebook
+- Introduce the Databricks File System (DBFS)
+- Introduce `dbutils`
+- Review the various "Magic Commands"
+- Review various built-in commands that facilitate working with the notebooks
+
+## Step 1 : How to run commands 
+-Each notebook is tied to a specific language: **Scala**, **Python**, **SQL** or **R**
+- Run the cell below using one of the following options:
+  - **CTRL+ENTER** or **CMD+RETURN**
+  - **SHIFT+ENTER** or **SHIFT+RETURN** to run the cell and move to the next one
+  - Using **Run Cell**, **Run All Above** or **Run All Below** as seen here
+  
+  Try running the code below in your notebook
+  
+```
+  print("Im running a new Notebook!")
+```
+
+## Step 2 : Magic Commands
+- Magic Commands are specific to the Databricks notebooks
+- They are very similar to Magic Commands found in comparable notebook products
+- These are built-in commands that do not apply to the notebook's default language
+- A single percent (%) symbol at the start of a cell identifies a Magic Commands
+
+Magic commands allow to run shell commands or execution of code in languages other than the notebook's default:
+
+- `%sh` : To execute shell commands
+- `%python` 
+- `%scala`
+- `%r`
+- `%sql`
+
+
+We can use `%scala` to run the above print command in scala:
+
+```
+%scala 
+println("I's running a new Notebook!")
+```
+  
+  ###  Other key Magic Commands
+  1) `%md` : allows us to render Markdown in a cell
+  2) `%run` : You can run a notebook from another notebook by using this Magic Command. All variables & functions defined in that other notebook will become available in your current notebook
+  
+  
+ ## Step 3 : Databricks File System and Utilities.
+ ### Databricks File System
+- DBFS is a layer over a cloud-based object store
+- Files in DBFS are persisted to the object store
+- The lifetime of files in the DBFS are **NOT** tied to the lifetime of our cluster
+#### Mounting Data into DBFS
+- Mounting other object stores into DBFS gives Databricks users access via the file system
+- This is just one of many techniques for pulling data into Spark
+- The datasets needed for this class have already been mounted for us with the call to %run "../Includes/Classroom Setup"
+- We will confirm that in just a few minutes
+
+### Databricks Utilties 
+- You can access the DBFS through the Databricks Utilities class (and other file IO routines).
+- An instance of DBUtils is already declared for us as `dbutils`.
+- For in-notebook documentation on DBUtils you can execute the command `dbutils.help()`
+
+#### Additional help is available for each sub-utility:
+- `dbutils.fs.help()` : Manipulates the Databricks filesystem (DBFS) from the console
+- `dbutils.meta.help()` : Methods to hook into the compiler (EXPERIMENTAL
+- `dbutils.notebook.help()`: Utilities for the control flow of a notebook (EXPERIMENTAL)
+- `dbutils.widgets.help()`:  Methods to create and get bound value of input widgets inside notebooks
+
+Let's take a look at the file system utilities, `dbutils.fs`
+
+Run the following command 
+```
+dbutils.fs.help()
+
+```
+#### Mounts in dbutills
+For the purpose of this demo all the data has already been mounted to the `training` datastore. 
+We can use dbutils.fs.mounts() to verify that.
+This method returns a collection of MountInfo objects, one for each mount :
+
+Run the following code in your notebook to verify: 
+```
+mount  =dbutils.fs.mounts()
+for mount in mounts:
+  print(mount.mountPoint + " >> " + mount.source)
+
+print("-"*80)
+
+```
+#### dbutils.fs.ls(..)
+- And now we can use `dbutils.fs.ls(..)` to view the contents of that mount
+- This method returns a collection of `FileInfo` objects, one for each item in the specified directory:
+
+Run the following code in your notebook to view the contents: 
+
+```
+files = dbutils.fs.ls("/mnt/training/")
+
+for fileInfo in files:
+  print(fileInfo.path)
+
+print("-"*80)
+```
+
 ## Lab 2: Accessing and using data
 1. Start a new notebook
 1. Run the below command to set up your environment
