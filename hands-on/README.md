@@ -32,6 +32,20 @@ A notebook is a collection of cells. These cells are run to execute code, to ren
 
 Now that you've created your notebook, let's use it to run some code.
 
+### Attach and detach your notebook
+To use your notebook to run a code, you must attach it to a cluster. You can also detach your notebook from a cluster and attach it to another depending upon your organization's requirements.
+
+The options that are available when a notebook is attached to a cluster
+<div><img src="https://docs.microsoft.com/en-us/learn/wwl-data-ai/describe-azure-databricks/media/attach-detach-cluster.png" style="height: 600px; margin: 20px"/></div>
+
+
+If your notebook is attached to a cluster, you can:
+
+-Detach your notebook from the cluster
+-Restart the cluster
+-Attach to another cluster
+-Open the Spark UI
+-View the log files of the driver
 
 ## Technical Accomplishments from this lab:
 - Set the stage for learning on the Databricks platform
